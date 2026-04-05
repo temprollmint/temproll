@@ -113,6 +113,9 @@ export function MintCard() {
               setBlockchainRarity(rarity)
               setActualTokensWon(tokensWon)
 
+              // NOW start the wheel spin (after payment confirmed)
+              setSpinTrigger(t => t + 1)
+
               // Show confetti for platinum+
               if (rarity !== 'bronze' && rarity !== 'silver') {
                 setShowConfetti(true)
@@ -156,13 +159,11 @@ export function MintCard() {
     }, { onError: (e) => { setPhase('error'); setErrorMsg(e.message.slice(0, 100)) } })
   }
 
-  // SPIN & MINT: Start wheel animation + send mint tx simultaneously
+  // SPIN & MINT: Send tx first, wheel spins AFTER blockchain confirms
   const handleSpinAndMint = () => {
     if (!isContractDeployed) return
     setPhase('spinning'); setErrorMsg('')
-    // Start wheel spinning (visual animation)
-    setSpinTrigger(t => t + 1)
-    // Send mint transaction to blockchain
+    // Send mint transaction to blockchain (wheel spins later)
     mint({ address: CONTRACTS.MINT_SALE, abi: MINT_SALE_ABI, functionName: 'mint',
       args: [],
     }, { onError: (e) => { setPhase('error'); setErrorMsg(e.message.slice(0, 100)) } })
@@ -263,7 +264,7 @@ export function MintCard() {
             ) : (
               <button className="btn btn-primary btn-lg btn-full spin-action-btn" onClick={handleSpinAndMint}
                 disabled={phase === 'spinning' || isMinting || !hasEnoughBalance}>
-                {phase === 'spinning' || isMinting ? '🎰 Spinning...' : '🎰 SPIN & MINT ($1)'}
+                {phase === 'spinning' || isMinting ? '⏳ Processing...' : '🎰 SPIN & MINT ($1)'}
               </button>
             )}
           </div>
