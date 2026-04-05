@@ -195,6 +195,15 @@ a:hover { color: var(--accent-gold-light); }
 .btn-sm { padding: 6px 14px; font-size: 13px; }
 .btn-full { width: 100%; }
 
+.btn-share {
+  margin-top: 12px; padding: 8px 20px; border-radius: var(--radius-full);
+  background: rgba(255,255,255,0.08); color: var(--text-primary);
+  border: 1px solid rgba(255,255,255,0.15); font-size: 13px; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
+  transition: all var(--transition-base);
+}
+.btn-share:hover { background: rgba(255,255,255,0.15); border-color: var(--accent-gold); color: var(--accent-gold); }
+
 .btn-connect {
   background: var(--accent-gold-gradient); color: #050510;
   font-weight: 700; padding: 7px 16px; border-radius: var(--radius-sm); font-size: 13px;
