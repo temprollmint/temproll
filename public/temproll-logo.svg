@@ -1,0 +1,54 @@
+<svg
+  width="512"
+  height="512"
+  viewBox="0 0 100 100"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <linearGradient id="logoGold" x1="0" y1="0" x2="100" y2="100">
+      <stop stop-color="#c9a44c" />
+      <stop offset="0.5" stop-color="#e8d48b" />
+      <stop offset="1" stop-color="#c9a44c" />
+    </linearGradient>
+  </defs>
+
+  <!-- Base Dark Background Circle -->
+  <circle cx="50" cy="50" r="48" fill="#080816" />
+
+  <!-- Outer Thin Ring -->
+  <circle cx="50" cy="50" r="48" stroke="url(#logoGold)" stroke-width="1.5" />
+
+  <!-- Outer Segmented Ring Base (Dark Navy) -->
+  <circle cx="50" cy="50" r="40" stroke="#10101f" fill="none" stroke-width="12" />
+  
+  <!-- Outer Segmented Ring (Gold) -->
+  <circle 
+    cx="50" cy="50" r="40" 
+    stroke="url(#logoGold)" fill="none" stroke-width="12" 
+    stroke-dasharray="10.471975511965978 10.471975511965978" 
+  />
+
+  <!-- Thin Separator Ring 1 -->
+  <circle cx="50" cy="50" r="33" fill="none" stroke="url(#logoGold)" stroke-width="1.5" />
+
+  <!-- Inner Segmented Ring Base (Dark Navy) -->
+  <circle cx="50" cy="50" r="26" stroke="#10101f" fill="none" stroke-width="10" />
+  
+  <!-- Inner Segmented Ring (Gold, Inverted/Staggered) -->
+  <circle 
+    cx="50" cy="50" r="26" 
+    stroke="url(#logoGold)" fill="none" stroke-width="10" 
+    stroke-dasharray="6.806784082777885 6.806784082777885" 
+    stroke-dashoffset="6.806784082777885" 
+  />
+
+  <!-- Thin Separator Ring 2 -->
+  <circle cx="50" cy="50" r="20" fill="none" stroke="url(#logoGold)" stroke-width="1.5" />
+
+  <!-- Central Big Futuristic T (Resized smaller) -->
+  <path 
+    d="M40 40 L60 40 L58 45 L53 45 L53 60 L47 60 L47 45 L42 45 Z" 
+    fill="url(#logoGold)" 
+  />
+</svg>
