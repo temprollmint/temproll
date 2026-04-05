@@ -270,52 +270,9 @@ export function SwapInterface() {
 
         {/* Swap button */}
         <div style={{ marginTop: 16 }}>
-          {!isConnected ? (
-            <div style={{ textAlign: 'center', padding: '8px 0', color: 'var(--text-tertiary)', fontSize: 14 }}>
-              Connect your wallet to swap
-            </div>
-          ) : !isContractDeployed ? (
-            <button className="btn btn-primary btn-lg btn-full" disabled>
-              Coming Soon
+          <button className="btn btn-primary btn-lg btn-full" disabled style={{ opacity: 0.6 }}>
+              ⏳ Coming Soon
             </button>
-          ) : needsApproval && inputParsed > 0n ? (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              <button
-                className="btn btn-secondary btn-lg btn-full"
-                onClick={handleApprove}
-                disabled={isApprovePending}
-                id="swap-approve-btn"
-              >
-                {isApprovePending ? (
-                  <><span className="spinner spinner-light" /> Approving...</>
-                ) : (
-                  `Step 1: Approve ${inputTokenName}`
-                )}
-              </button>
-              <button
-                className="btn btn-primary btn-lg btn-full"
-                disabled
-                id="swap-execute-btn"
-              >
-                Step 2: Swap
-              </button>
-            </div>
-          ) : (
-            <button
-              className="btn btn-primary btn-lg btn-full"
-              onClick={handleSwap}
-              disabled={isSwapPending || !inputAmount || inputParsed === 0n}
-              id="swap-execute-btn"
-            >
-              {isSwapPending ? (
-                <><span className="spinner" /> Swapping...</>
-              ) : !inputAmount ? (
-                'Enter Amount'
-              ) : (
-                `Swap ${inputTokenName} → ${outputTokenName}`
-              )}
-            </button>
-          )}
         </div>
       </div>
     </div>
