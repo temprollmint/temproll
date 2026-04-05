@@ -27,25 +27,19 @@ const SEGMENTS = [
 ]
 
 const SEG_DEG = 360 / SEGMENTS.length
-const ODDS: { rarity: Rarity; w: number }[] = [
-  { rarity: 'bronze', w: 45 }, { rarity: 'silver', w: 30 }, { rarity: 'platinum', w: 18 },
-  { rarity: 'diamond', w: 6 }, { rarity: 'golden', w: 1 },
-]
 
-function pick(): Rarity {
-  const total = ODDS.reduce((s, o) => s + o.w, 0)
-  let r = Math.random() * total
-  for (const o of ODDS) { r -= o.w; if (r <= 0) return o.rarity }
-  return 'bronze'
+interface Props {
+  spinTrigger: number
+  onComplete: (rarity: Rarity) => void
+  targetRarity?: Rarity | null  // NEW: blockchain result to land on
 }
 
-interface Props { spinTrigger: number; onComplete: (rarity: Rarity) => void }
-
-export function SpinWheel({ spinTrigger, onComplete }: Props) {
+export function SpinWheel({ spinTrigger, onComplete, targetRarity }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [rotation, setRotation] = useState(0)
   const [isSpinning, setIsSpinning] = useState(false)
   const prevTrigger = useRef(0)
+  const pendingLand = useRef(false)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -105,25 +99,22 @@ export function SpinWheel({ spinTrigger, onComplete }: Props) {
 
       // Label — strictly radial orientation (reads from center outward)
       const mid = (a1 + a2) / 2
-      const labelR = rad * 0.62 // move text slightly outward
+      const labelR = rad * 0.62
       ctx.save()
       ctx.translate(cx + Math.cos(mid) * labelR, cy + Math.sin(mid) * labelR)
       
-      // Calculate angle in degrees (0=right, 90=bottom, 180=left, -90=top)
       const angleDeg = mid * 180 / Math.PI
       
-      // If the segment is on the left side of the wheel, flip 180°
       if (angleDeg > 90 || angleDeg < -90) {
-        ctx.rotate(mid + Math.PI) // Reads edge to center
+        ctx.rotate(mid + Math.PI)
       } else {
-        ctx.rotate(mid) // Reads center to edge
+        ctx.rotate(mid)
       }
       
       ctx.textAlign = 'center'; ctx.textBaseline = 'middle'
       const fs = seg.rarity === 'golden' ? 14 : seg.rarity === 'diamond' ? 13 : 12
       ctx.font = `800 ${fs}px 'Inter', sans-serif`
 
-      // Text glow for rare
       if (seg.rarity === 'golden' || seg.rarity === 'diamond') {
         ctx.shadowColor = seg.tx
         ctx.shadowBlur = seg.rarity === 'golden' ? 15 : 10
@@ -159,24 +150,39 @@ export function SpinWheel({ spinTrigger, onComplete }: Props) {
     ctx.shadowBlur = 0
   }, [])
 
-  const doSpin = useCallback(() => {
+  // Start continuous spin when triggered (no landing yet)
+  const startSpin = useCallback(() => {
     if (isSpinning) return
     setIsSpinning(true)
-    const result = pick()
-    const segIdx = SEGMENTS.findIndex(s => s.rarity === result)
+    pendingLand.current = true
+    // Just keep spinning — add a lot of rotation (will be replaced when result arrives)
+    setRotation(prev => prev + 360 * 20)
+  }, [isSpinning])
+
+  // Land on the correct rarity when blockchain result comes in
+  useEffect(() => {
+    if (!targetRarity || !isSpinning || !pendingLand.current) return
+    pendingLand.current = false
+
+    // Find the segment matching the target rarity
+    const matchingIndices = SEGMENTS.map((s, i) => s.rarity === targetRarity ? i : -1).filter(i => i >= 0)
+    const segIdx = matchingIndices[Math.floor(Math.random() * matchingIndices.length)]
     const jitter = (Math.random() - 0.5) * SEG_DEG * 0.5
     const segCenter = segIdx * SEG_DEG + SEG_DEG / 2 + jitter
+
+    // Calculate final landing position
     const targetMod = (360 - segCenter + 360) % 360
     const currentMod = rotation % 360
     const extra = (targetMod - currentMod + 360) % 360
-    const fullSpins = (6 + Math.floor(Math.random() * 3)) * 360
+    const fullSpins = (3 + Math.floor(Math.random() * 2)) * 360
+
     setRotation(prev => prev + fullSpins + extra)
-    setTimeout(() => { setIsSpinning(false); onComplete(result) }, 4500)
-  }, [isSpinning, rotation, onComplete])
+    setTimeout(() => { setIsSpinning(false); onComplete(targetRarity) }, 4500)
+  }, [targetRarity, isSpinning, rotation, onComplete])
 
   useEffect(() => {
-    if (spinTrigger > prevTrigger.current) { prevTrigger.current = spinTrigger; doSpin() }
-  }, [spinTrigger, doSpin])
+    if (spinTrigger > prevTrigger.current) { prevTrigger.current = spinTrigger; startSpin() }
+  }, [spinTrigger, startSpin])
 
   return (
     <div className="sw-root">

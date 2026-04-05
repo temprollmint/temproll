@@ -51,6 +51,7 @@ export function MintCard() {
   const [spinRarity, setSpinRarity] = useState<Rarity>('bronze')
   const [showConfetti, setShowConfetti] = useState(false)
   const [actualTokensWon, setActualTokensWon] = useState(0)
+  const [blockchainRarity, setBlockchainRarity] = useState<Rarity | null>(null)
 
   const tier = MINT_TIERS[0]
 
@@ -109,8 +110,8 @@ export function MintCard() {
 
               // Set the REAL result from blockchain
               setSpinRarity(rarity)
+              setBlockchainRarity(rarity)
               setActualTokensWon(tokensWon)
-              setPhase('success')
 
               // Show confetti for platinum+
               if (rarity !== 'bronze' && rarity !== 'silver') {
@@ -166,11 +167,13 @@ export function MintCard() {
       args: [],
     }, { onError: (e) => { setPhase('error'); setErrorMsg(e.message.slice(0, 100)) } })
   }
-  // Wheel animation complete — no-op for real mints (result comes from blockchain event)
-  const handleSpinComplete = useCallback((_rarity: Rarity) => {}, [])
+  // Wheel animation complete — now show the result
+  const handleSpinComplete = useCallback((_rarity: Rarity) => {
+    setPhase('success')
+  }, [])
 
 
-  const reset = () => { setPhase('idle'); setErrorMsg(''); setSpinRarity('bronze'); setActualTokensWon(0) }
+  const reset = () => { setPhase('idle'); setErrorMsg(''); setSpinRarity('bronze'); setActualTokensWon(0); setBlockchainRarity(null) }
   const info = RARITY_INFO[spinRarity]
 
   // Rarity CSS class
@@ -205,7 +208,7 @@ export function MintCard() {
           </div>
           {/* Spin Wheel */}
           <div className="wheel-stage">
-            <SpinWheel spinTrigger={spinTrigger} onComplete={handleSpinComplete} />
+            <SpinWheel spinTrigger={spinTrigger} onComplete={handleSpinComplete} targetRarity={blockchainRarity} />
           </div>
 
           {/* Result Display — shows ACTUAL blockchain result */}
