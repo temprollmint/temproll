@@ -217,17 +217,6 @@ export function MintCard() {
               <div className="spin-result-tag" style={{ color: info.color, opacity: 0.8 }}>
                 You received {actualTokensWon.toLocaleString()} tokens! ({info.mult}x)
               </div>
-              <button
-                className="btn btn-share"
-                onClick={() => {
-                  const emoji = spinRarity === 'golden' ? '🏆' : spinRarity === 'diamond' ? '💎' : spinRarity === 'platinum' ? '🔮' : spinRarity === 'silver' ? '🥈' : '🎰'
-                  const text = `${emoji} Just rolled ${info.label} (${info.mult}x) on $TEMPROLL!\n${actualTokensWon.toLocaleString()} tokens from a single $1 spin 🔥\n\nSpin yours → https://www.temproll.fun/mint\n\n#TEMPROLL #Tempo`
-                  window.open(`https://x.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank')
-                }}
-              >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                Share on 𝕏
-              </button>
             </div>
           )}
 
