@@ -35,9 +35,6 @@ export function ProgressBar({ totalMinted }: ProgressBarProps) {
         <span>
           {formatNum(totalMinted)} / {formatNum(TOKEN.publicMint)} tokens
         </span>
-        <span>
-          ${raisedUSD.toFixed(0)} raised
-        </span>
       </div>
     </div>
   )
