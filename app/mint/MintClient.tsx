@@ -27,7 +27,7 @@ export function MintClient() {
           </div>
           <div className="step-card fade-in-delay-2">
             <div className="step-number">2</div>
-            <h3 className="step-title">Spin ($1)</h3>
+            <h3 className="step-title">Spin ($0.50)</h3>
             <p className="step-desc">Hit SPIN & MINT. The wheel stops on a rarity: Bronze (1x), Silver (1.25x), Platinum (1.5x), Diamond (2.5x) or Golden (5x).</p>
           </div>
           <div className="step-card fade-in-delay-3">
