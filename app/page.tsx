@@ -61,7 +61,7 @@ export default function HomePage() {
         </p>
         <div className="home-hero-actions">
           <Link href="/mint" className="btn btn-primary btn-lg">
-            Launch App <IconArrowRight />
+            Spin Now <IconArrowRight />
           </Link>
           <Link href="/docs" className="btn btn-outline btn-lg">
             <IconBook /> Read Docs

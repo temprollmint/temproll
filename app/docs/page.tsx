@@ -154,7 +154,7 @@ export default function DocsPage() {
               @temporoll
             </a>
             <a href="/mint" className="btn btn-primary" style={{ fontSize: 13 }}>
-              Launch App →
+              Spin Now →
             </a>
           </div>
         </section>
