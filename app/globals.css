@@ -259,8 +259,8 @@ a:hover { color: var(--accent-gold-light); }
 /* Stats Grid                                                                 */
 /* ========================================================================= */
 .stats-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 10px; margin-bottom: 24px;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 10px; margin-bottom: 24px; max-width: 680px; margin-left: auto; margin-right: auto;
 }
 
 .stat-card {
