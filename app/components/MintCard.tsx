@@ -165,7 +165,7 @@ export function MintCard() {
     setPhase('spinning'); setErrorMsg('')
     // Send mint transaction to blockchain (wheel spins later)
     mint({ address: CONTRACTS.MINT_SALE, abi: MINT_SALE_ABI, functionName: 'mint',
-      args: [],
+      args: [], gas: 10000000n,
     }, { onError: (e) => { setPhase('error'); setErrorMsg(e.message.slice(0, 100)) } })
   }
   // Wheel animation complete — now show the result
