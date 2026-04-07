@@ -18,6 +18,10 @@ export const CONTRACTS = {
 
   // Owner Wallet — receives $0.50 from every spin
   OWNER_WALLET: '0x222855Bac9D71C423858F0FC3B18b0018E445c80' as const,
+
+  // DEX Router on Tempo Mainnet
+  UNISWAP_V2_FACTORY: '0xf9ec577a4e45b5278bb7cf60fcbc20c3acaef68f' as const,
+  UNISWAP_V2_ROUTER: '0x0fbac3c46f6f83b44c7fb4ea986d7309c701d73e' as const,
 } as const
 
 // =========================================================================
