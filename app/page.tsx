@@ -105,19 +105,14 @@ export default function HomePage() {
       <section className="home-stats fade-in-delay-2">
         <div className="stats-grid">
           <div className="stat-card">
-            <div className="stat-label">Price</div>
-            <div className="stat-value gold">$0.0001</div>
-            <div className="stat-label" style={{ marginTop: 2, fontSize: 11 }}>per token</div>
+            <div className="stat-label">Spin Cost</div>
+            <div className="stat-value gold">$0.50</div>
+            <div className="stat-label" style={{ marginTop: 2, fontSize: 11 }}>pathUSD</div>
           </div>
           <div className="stat-card">
             <div className="stat-label">Supply</div>
             <div className="stat-value">100M</div>
             <div className="stat-label" style={{ marginTop: 2, fontSize: 11 }}>$TEMPROLL</div>
-          </div>
-          <div className="stat-card">
-            <div className="stat-label">FDV</div>
-            <div className="stat-value gold">$10K</div>
-            <div className="stat-label" style={{ marginTop: 2, fontSize: 11 }}>market cap</div>
           </div>
           <div className="stat-card">
             <div className="stat-label">Network</div>
