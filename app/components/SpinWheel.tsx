@@ -6,11 +6,11 @@ import { useRef, useEffect, useCallback, useState } from 'react'
 export type Rarity = 'bronze' | 'silver' | 'platinum' | 'diamond' | 'golden'
 
 export const RARITY_INFO: Record<Rarity, { label: string; color: string; glow: string; chance: string; mult: number }> = {
-  bronze:   { label: 'Bronze',   color: '#cd7f32', glow: 'rgba(205,127,50,0.4)',  chance: '45%', mult: 1 },
-  silver:   { label: 'Silver',   color: '#c0c0c0', glow: 'rgba(192,192,192,0.4)', chance: '30%', mult: 1.25 },
-  platinum: { label: 'Platinum', color: '#a855f7', glow: 'rgba(168,85,247,0.4)',  chance: '18%', mult: 1.5 },
-  diamond:  { label: 'Diamond',  color: '#38bdf8', glow: 'rgba(56,189,248,0.4)',  chance: '6%',  mult: 2.5 },
-  golden:   { label: 'Golden',   color: '#ffd700', glow: 'rgba(255,215,0,0.5)',   chance: '1%',  mult: 5 },
+  bronze:   { label: 'Bronze',   color: '#cd7f32', glow: 'rgba(205,127,50,0.4)',  chance: '75%', mult: 1 },
+  silver:   { label: 'Silver',   color: '#c0c0c0', glow: 'rgba(192,192,192,0.4)', chance: '15%', mult: 1.25 },
+  platinum: { label: 'Platinum', color: '#a855f7', glow: 'rgba(168,85,247,0.4)',  chance: '5%', mult: 1.5 },
+  diamond:  { label: 'Diamond',  color: '#38bdf8', glow: 'rgba(56,189,248,0.4)',  chance: '3%',  mult: 2.5 },
+  golden:   { label: 'Golden',   color: '#ffd700', glow: 'rgba(255,215,0,0.5)',   chance: '2%',  mult: 5 },
 }
 
 const SEGMENTS = [

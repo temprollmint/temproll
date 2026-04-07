@@ -13,8 +13,8 @@ contract MintSale {
     ITIP20 public immutable saleToken;
     address public immutable owner;
 
-    // Fixed mint price: $1 pathUSD (6 decimals)
-    uint256 public constant MINT_PRICE = 1_000_000;
+    // Fixed mint price: $0.50 pathUSD (6 decimals)
+    uint256 public constant MINT_PRICE = 500_000;
 
     // Base tokens per spin: 10,000 TEMPROLL (6 decimals)
     uint256 public constant BASE_TOKENS = 10_000_000_000;
@@ -66,24 +66,24 @@ contract MintSale {
         uint256 tokensOut;
         uint8 rarity;
 
-        if (rand < 45) {
-            // Bronze (45% chance) — 1x = 10,000 tokens
+        if (rand < 75) {
+            // Bronze (75% chance) — 1x = 10,000 tokens
             rarity = 0;
             tokensOut = BASE_TOKENS;
-        } else if (rand < 75) {
-            // Silver (30% chance) — 1.25x = 12,500 tokens
+        } else if (rand < 90) {
+            // Silver (15% chance) — 1.25x = 12,500 tokens
             rarity = 1;
             tokensOut = BASE_TOKENS * 125 / 100;
-        } else if (rand < 93) {
-            // Platinum (18% chance) — 1.5x = 15,000 tokens
+        } else if (rand < 95) {
+            // Platinum (5% chance) — 1.5x = 15,000 tokens
             rarity = 2;
             tokensOut = BASE_TOKENS * 150 / 100;
-        } else if (rand < 99) {
-            // Diamond (6% chance) — 2.5x = 25,000 tokens
+        } else if (rand < 98) {
+            // Diamond (3% chance) — 2.5x = 25,000 tokens
             rarity = 3;
             tokensOut = BASE_TOKENS * 25 / 10;
         } else {
-            // Golden (1% chance) — 5x = 50,000 tokens JACKPOT!
+            // Golden (2% chance) — 5x = 50,000 tokens JACKPOT!
             rarity = 4;
             tokensOut = BASE_TOKENS * 5;
         }

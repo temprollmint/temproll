@@ -205,7 +205,7 @@ export function MintCard() {
           </p>
 
           <div className="fixed-rate-badge fade-in-delay-3">
-            <span className="rate-price">$1</span> = <span className="rate-tokens">10,000 up to 50,000 $TEMPROLL</span>
+            <span className="rate-price">$0.5</span> = <span className="rate-tokens">10,000 up to 50,000 $TEMPROLL</span>
           </div>
           {/* Spin Wheel */}
           <div className="wheel-stage">
@@ -264,7 +264,7 @@ export function MintCard() {
             ) : (
               <button className="btn btn-primary btn-lg btn-full spin-action-btn" onClick={handleSpinAndMint}
                 disabled={phase === 'spinning' || isMinting || !hasEnoughBalance}>
-                {phase === 'spinning' || isMinting ? '⏳ Processing...' : '🎰 SPIN & MINT ($1)'}
+                {phase === 'spinning' || isMinting ? '⏳ Processing...' : '🎰 SPIN & MINT ($0.5)'}
               </button>
             )}
           </div>

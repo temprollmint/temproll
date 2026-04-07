@@ -34,6 +34,9 @@ const TOKEN_SYMBOL = 'TEMPROLL';
 const TOKEN_DECIMALS = 6;
 const TOKEN_TOTAL_SUPPLY = 100_000_000n * 1_000_000n; // 100M with 6 decimals
 
+// Revenue Treasury
+const TREASURY_WALLET = '0x99145cbEfBf8c9D62A06200D046B2F3a996194A4';
+
 // =========================================================================
 // Setup
 // =========================================================================
@@ -161,7 +164,7 @@ async function deployMintSale(tokenAddress) {
   const hash = await walletClient.deployContract({
     abi,
     bytecode,
-    args: [PATH_USD, tokenAddress, account.address],
+    args: [PATH_USD, tokenAddress, TREASURY_WALLET],
     gas: 5_000_000n,
   });
 
@@ -222,18 +225,18 @@ function updateConfig(tokenAddress, mintSaleAddress) {
   const configPath = path.resolve(__dirname, '../app/config/contracts.ts');
   let config = fs.readFileSync(configPath, 'utf8');
 
-  // Replace placeholder addresses
+  // Replace existing addresses
   config = config.replace(
-    /TEMPROLL_TOKEN: '0x0+' as const/,
+    /TEMPROLL_TOKEN: '0x[a-fA-F0-9]{40}' as const/,
     `TEMPROLL_TOKEN: '${tokenAddress}' as const`
   );
   config = config.replace(
-    /MINT_SALE: '0x0+' as const/,
+    /MINT_SALE: '0x[a-fA-F0-9]{40}' as const/,
     `MINT_SALE: '${mintSaleAddress}' as const`
   );
   config = config.replace(
-    /OWNER_WALLET: '0x0+' as const/,
-    `OWNER_WALLET: '${account.address}' as const`
+    /OWNER_WALLET: '0x[a-fA-F0-9]{40}' as const/,
+    `OWNER_WALLET: '${TREASURY_WALLET}' as const`
   );
 
   fs.writeFileSync(configPath, config);

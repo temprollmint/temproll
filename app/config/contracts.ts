@@ -39,19 +39,19 @@ export const TOKEN = {
   fdvMcap: 10_000, // $10K
 } as const
 
-// Single mint tier: $1 per spin
+// Single mint tier: $0.50 per spin
 export const MINT_TIERS = [
   {
-    label: '$1',
-    price: 1,
-    priceRaw: 1_000_000n,        // 1 pathUSD (6 decimals)
+    label: '$0.50',
+    price: 0.5,
+    priceRaw: 500_000n,        // 0.5 pathUSD (6 decimals)
     tokens: 10_000,
     tokensRaw: 10_000_000_000n,  // 10,000 TEMPROLL base (6 decimals)
   },
 ] as const
 
 // Total tokens sold if all sold out = 80,000,000
-// Expected revenue if sold out = ~$6,178 pathUSD (avg 12,950 tokens/spin)
+// Expected revenue if sold out = ~$3,368 pathUSD (avg 11,875 tokens/spin due to 75% bronze chance)
 
 // =========================================================================
 // ABIs
