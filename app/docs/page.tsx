@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Docs — TEMPROLL',
+  title: 'Docs | TEMPROLL',
   description: 'Official documentation for the TEMPROLL spin-to-mint protocol on Tempo.',
 }
 
@@ -129,7 +129,7 @@ export default function DocsPage() {
             </details>
             <details className="docs-faq-item">
               <summary>How does the spin rarity work?</summary>
-              <p>Each spin randomly reveals a rarity tier (Bronze through Golden). The rarity determines your token multiplier. Bronze gives 1x (10,000 tokens), while the ultra-rare Golden gives 5x (50,000 tokens). Rarity is determined by the MintSale smart contract and recorded on-chain — it cannot be manipulated by anyone.</p>
+              <p>Each spin randomly reveals a rarity tier (Bronze through Golden). The rarity determines your token multiplier. Bronze gives 1x (10,000 tokens), while the ultra-rare Golden gives 5x (50,000 tokens). Rarity is determined by the MintSale smart contract and recorded on-chain. It cannot be manipulated by anyone.</p>
             </details>
             <details className="docs-faq-item">
               <summary>Is there a maximum per wallet?</summary>
@@ -137,11 +137,11 @@ export default function DocsPage() {
             </details>
             <details className="docs-faq-item">
               <summary>When does trading begin?</summary>
-              <p>Trading begins after the public mint concludes. 20M $TEMPROLL (20% of total supply) + 100% of all raised pathUSD will be paired and deployed as permanent on-chain liquidity. All funds go to LP — nothing is kept by the team.</p>
+              <p>Trading begins after the public mint concludes. 20M $TEMPROLL (20% of total supply) + 100% of all raised pathUSD will be paired and deployed as permanent on-chain liquidity. All funds go to LP, nothing is kept by the team.</p>
             </details>
             <details className="docs-faq-item">
               <summary>Is there a team allocation?</summary>
-              <p>No. Zero tokens are allocated to the team, advisors, or investors. All admin roles have been permanently renounced on-chain — no one can mint new tokens or modify the supply. This is a 100% community-driven fair launch, verifiable by anyone.</p>
+              <p>No. Zero tokens are allocated to the team, advisors, or investors. All admin roles have been permanently renounced on-chain. No one can mint new tokens or modify the supply. This is a 100% community-driven fair launch, verifiable by anyone.</p>
             </details>
           </div>
         </section>

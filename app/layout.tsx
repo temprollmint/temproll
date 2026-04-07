@@ -4,7 +4,7 @@ import { Providers } from './components/Providers'
 import { Navbar } from './components/Navbar'
 
 export const metadata: Metadata = {
-  title: 'TEMPROLL — Spin & Mint on Tempo',
+  title: 'TEMPROLL | Spin & Mint on Tempo',
   description: 'Spin the roulette and mint $TEMPROLL tokens on Tempo. Fair launch, 0% team allocation, gamified minting.',
   keywords: ['TEMPROLL', 'Tempo', 'TIP-20', 'mint', 'DeFi', 'spin', 'roulette'],
   icons: {
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     apple: '/temproll-logo.svg',
   },
   openGraph: {
-    title: 'TEMPROLL — Spin & Mint on Tempo',
+    title: 'TEMPROLL | Spin & Mint on Tempo',
     description: 'The first spin-to-mint fair launch. Spin the wheel, test your luck, claim $TEMPROLL.',
     type: 'website',
   },
