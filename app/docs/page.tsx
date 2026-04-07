@@ -88,8 +88,8 @@ export default function DocsPage() {
             </tbody>
           </table>
           <p style={{ marginTop: 12, fontSize: 13 }}>
-            After the public mint concludes, the 20% LP reserve is paired with raised pathUSD
-            and deployed as permanent liquidity on a DEX. No tokens are held back.
+            After the public mint concludes, 20,000,000 $TEMPROLL (20% of total supply) + 100% of all raised pathUSD
+            are paired and deployed as permanent liquidity on a DEX. No tokens or funds are held back.
           </p>
         </section>
 
@@ -137,7 +137,7 @@ export default function DocsPage() {
             </details>
             <details className="docs-faq-item">
               <summary>When does trading begin?</summary>
-              <p>Trading begins after the public mint concludes. The 20% LP reserve will be paired with raised pathUSD and deployed as permanent on-chain liquidity.</p>
+              <p>Trading begins after the public mint concludes. 20M $TEMPROLL (20% of total supply) + 100% of all raised pathUSD will be paired and deployed as permanent on-chain liquidity. All funds go to LP — nothing is kept by the team.</p>
             </details>
             <details className="docs-faq-item">
               <summary>Is there a team allocation?</summary>

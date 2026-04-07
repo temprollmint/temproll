@@ -95,7 +95,7 @@ export default function HomePage() {
             <div className="step-icon"><IconZap /></div>
             <h3 className="step-title">Instant Liquidity</h3>
             <p className="step-desc">
-              After mint sells out, 20% reserve goes to DEX
+              After mint sells out, 20M $TEMPROLL (20% of supply) + all raised funds go to DEX
               LP pool. Trade $TEMPROLL instantly.
             </p>
           </div>
