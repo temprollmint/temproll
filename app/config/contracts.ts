@@ -11,17 +11,13 @@ export const CONTRACTS = {
   TIP20_FACTORY: '0x20Fc000000000000000000000000000000000000' as const,
 
   // $TEMPROLL Token (TIP-20) — DEPLOYED on Tempo Mainnet
-  TEMPROLL_TOKEN: '0x20C000000000000000000000bDf493011FAe2C52' as const,
+  TEMPROLL_TOKEN: '0x20C000000000000000000000a943E88Ee77D9F7a' as const,
 
   // MintSale Contract — DEPLOYED on Tempo Mainnet
-  MINT_SALE: '0x27111897A943a766a375932101BDcF5Aba4632a5' as const,
+  MINT_SALE: '0x96D0B039748B30F9907DEA0118a43627026FE936' as const,
 
-  // Owner Wallet — receives $1 from every spin
-  OWNER_WALLET: '0x165c8df6fcee211491267e6eb5b11e6fc5f22b91' as const,
-
-  // Uniswap V2 on Tempo Mainnet
-  UNISWAP_V2_FACTORY: '0xf9ec577a4e45b5278bb7cf60fcbc20c3acaef68f' as const,
-  UNISWAP_V2_ROUTER: '0x0fbac3c46f6f83b44c7fb4ea986d7309c701d73e' as const,
+  // Owner Wallet — receives $0.50 from every spin
+  OWNER_WALLET: '0x222855Bac9D71C423858F0FC3B18b0018E445c80' as const,
 } as const
 
 // =========================================================================

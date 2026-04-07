@@ -69,10 +69,20 @@ async function createToken() {
 
   const TIP20_FACTORY_ABI = parseAbi([
     'function createToken(string name, string symbol, string currency, address quoteToken, address admin, bytes32 salt) returns (address)',
+    'function getTokenAddress(address sender, bytes32 salt) view returns (address)',
   ]);
 
-  // Salt for deterministic address (use a unique value)
-  const salt = '0x0000000000000000000000000000000000000000000000000000000000000001';
+  // Salt for deterministic address (unique per deployment)
+  const salt = '0x000000000000000000000000000000000000000000000000000000000000abcd';
+
+  // Pre-compute the token address using the factory helper
+  const predictedAddress = await publicClient.readContract({
+    address: TIP20_FACTORY,
+    abi: TIP20_FACTORY_ABI,
+    functionName: 'getTokenAddress',
+    args: [account.address, salt],
+  });
+  console.log(`   Predicted token address: ${predictedAddress}`);
 
   const hash = await walletClient.writeContract({
     address: TIP20_FACTORY,
@@ -81,43 +91,23 @@ async function createToken() {
     args: [
       TOKEN_NAME,
       TOKEN_SYMBOL,
-      '',                                                         // currency: empty (not a stablecoin)
-      '0x0000000000000000000000000000000000000000',               // quoteToken: none
-      account.address,                                            // admin: deployer wallet
+      '',                      // currency: empty (not a stablecoin)
+      PATH_USD,                // quoteToken: pathUSD (same as old token)
+      account.address,         // admin: deployer wallet
       salt,
     ],
-    gas: 500_000n,
+    gas: 10_000_000n,
   });
 
   console.log(`   Tx hash: ${hash}`);
   const receipt = await publicClient.waitForTransactionReceipt({ hash });
 
-  // The new token address is in the logs
-  // TIP-20 Factory typically emits the token address in the first log
-  let tokenAddress = null;
-  for (const log of receipt.logs) {
-    if (log.topics.length > 0) {
-      // The created token address is usually in topic[1] or in the log address
-      const possibleAddr = log.address;
-      if (possibleAddr.toLowerCase() !== TIP20_FACTORY.toLowerCase() &&
-        possibleAddr.toLowerCase() !== PATH_USD.toLowerCase()) {
-        tokenAddress = possibleAddr;
-        break;
-      }
-    }
-  }
-
-  // Fallback: try to get from the last log's address
-  if (!tokenAddress && receipt.logs.length > 0) {
-    tokenAddress = receipt.logs[receipt.logs.length - 1].address;
-  }
-
-  if (!tokenAddress) {
-    console.error('❌ Could not find token address in tx receipt. Check explorer manually.');
-    console.error('   Receipt:', JSON.stringify(receipt, null, 2));
+  if (receipt.status === 'reverted') {
+    console.error('❌ createToken transaction REVERTED! Check salt or params.');
     process.exit(1);
   }
 
+  const tokenAddress = predictedAddress;
   console.log(`   ✅ $TEMPROLL token created at: ${tokenAddress}\n`);
   return tokenAddress;
 }

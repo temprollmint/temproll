@@ -34,8 +34,8 @@ export default function DocsPage() {
             <div className="docs-list-item">
               <span className="docs-list-num">1</span>
               <div>
-                <strong>Pay $1 pathUSD</strong>
-                <p>Each spin costs exactly $1 pathUSD. You get a minimum of 10,000 $TEMPROLL, with a chance for up to 5x more.</p>
+                <strong>Pay $0.50 pathUSD</strong>
+                <p>Each spin costs exactly $0.50 pathUSD. You get a minimum of 10,000 $TEMPROLL, with a chance for up to 5x more.</p>
               </div>
             </div>
             <div className="docs-list-item">
@@ -71,7 +71,7 @@ export default function DocsPage() {
             </tbody>
           </table>
           <p style={{ marginTop: 12, fontSize: 12, color: 'var(--text-tertiary)' }}>
-            Base rate: $1 = 10,000 $TEMPROLL. Higher rarities multiply your reward!
+            Base rate: $0.50 = 10,000 $TEMPROLL. Higher rarities multiply your reward!
           </p>
         </section>
 
@@ -89,7 +89,7 @@ export default function DocsPage() {
           </table>
           <p style={{ marginTop: 12, fontSize: 13 }}>
             After the public mint concludes, the 20% LP reserve is paired with raised pathUSD
-            and deployed as permanent liquidity on Uniswap V2. No tokens are held back.
+            and deployed as permanent liquidity on a DEX. No tokens are held back.
           </p>
         </section>
 
@@ -107,11 +107,11 @@ export default function DocsPage() {
               <tr><td>Chain ID</td><td>4217</td></tr>
               <tr><td>Decimals</td><td>6</td></tr>
               <tr><td>Total Supply</td><td>100,000,000</td></tr>
-              <tr><td>Mint Price</td><td>$1 per spin (10K-50K tokens)</td></tr>
+              <tr><td>Mint Price</td><td>$0.50 per spin (10K-50K tokens)</td></tr>
               <tr><td>Payment Token</td><td>pathUSD</td></tr>
-              <tr><td>Token Contract</td><td style={{ fontSize: 11, wordBreak: 'break-all' as const }}>0x20C000000000000000000000bDf493011FAe2C52</td></tr>
-              <tr><td>MintSale Contract</td><td style={{ fontSize: 11, wordBreak: 'break-all' as const }}>0x27111897A943a766a375932101BDcF5Aba4632a5</td></tr>
-              <tr><td>DEX</td><td>Uniswap V2</td></tr>
+              <tr><td>Token Contract</td><td style={{ fontSize: 11, wordBreak: 'break-all' as const }}>0x20C000000000000000000000a943E88Ee77D9F7a</td></tr>
+              <tr><td>MintSale Contract</td><td style={{ fontSize: 11, wordBreak: 'break-all' as const }}>0x96D0B039748B30F9907DEA0118a43627026FE936</td></tr>
+
             </tbody>
           </table>
         </section>
@@ -137,7 +137,7 @@ export default function DocsPage() {
             </details>
             <details className="docs-faq-item">
               <summary>When does trading begin?</summary>
-              <p>Trading begins after the public mint concludes. The 20% LP reserve will be paired with raised pathUSD and deployed as permanent on-chain liquidity via Uniswap V2.</p>
+              <p>Trading begins after the public mint concludes. The 20% LP reserve will be paired with raised pathUSD and deployed as permanent on-chain liquidity.</p>
             </details>
             <details className="docs-faq-item">
               <summary>Is there a team allocation?</summary>

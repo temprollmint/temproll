@@ -16,7 +16,7 @@ export function MintClient() {
           How It <span style={{ color: 'var(--accent-gold)' }}>Works</span>
         </h2>
         <p className="how-it-works-desc">
-          Spin the wheel to mint $TEMPROLL. Every spin costs exactly $1 and guarantees you a minimum of 10,000 tokens.
+          Spin the wheel to mint $TEMPROLL. Every spin costs exactly $0.50 and guarantees you a minimum of 10,000 tokens.
           The rarer your spin, the bigger your multiplier. Up to a 50,000 token jackpot!
         </p>
         <div className="steps-grid">

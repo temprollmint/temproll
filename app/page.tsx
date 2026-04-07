@@ -57,7 +57,7 @@ export default function HomePage() {
         </p>
         <p className="hero-subtitle">
           The first gamified fair launch on Tempo.
-          Spin the wheel, stack $TEMPROLL. Starting at just $1 per spin.
+          Spin the wheel, stack $TEMPROLL. Starting at just $0.50 per spin.
         </p>
         <div className="home-hero-actions">
           <Link href="/mint" className="btn btn-primary btn-lg">
@@ -95,7 +95,7 @@ export default function HomePage() {
             <div className="step-icon"><IconZap /></div>
             <h3 className="step-title">Instant Liquidity</h3>
             <p className="step-desc">
-              After mint sells out, 20% reserve goes to Uniswap V2
+              After mint sells out, 20% reserve goes to DEX
               LP pool. Trade $TEMPROLL instantly.
             </p>
           </div>
