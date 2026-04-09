@@ -25,9 +25,6 @@ export function Navbar() {
           <Link href="/swap" className={`navbar-link ${pathname === '/swap' ? 'active' : ''}`}>
             Swap
           </Link>
-          <Link href="/stake" className={`navbar-link ${pathname === '/stake' ? 'active' : ''}`}>
-            Stake
-          </Link>
           <Link href="/docs" className={`navbar-link ${pathname === '/docs' ? 'active' : ''}`}>
             Docs
           </Link>
